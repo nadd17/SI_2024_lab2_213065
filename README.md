@@ -76,37 +76,32 @@ Branch 6: if (item.getPrice() > 300 && item.getDiscount() > 0 && item.getBarcode
 
 Branch 7: if (sum <= payment)
 
-1:
+1: Покрива случај каде што allItems == null.
 input: checkCart (null, 1)
 
 output: RuntimeException
 
-2:
+2: Покрива случај каде што името е null, кога има discount и кога payment е поголем од сумата.
 input: checkCart ( [(null, "123456", 100, 0.1)], 100)
 
 output: true
 
-3:
+3: Покриваат случај каде што нема бар код.
 input: checkCart ( [("ImeItem", null, 100, 0.1)], 100)
 
 output: "No barcode"
 
-4:
-input: checkCart ( [("ImeItem", null, 100, 0.1)], 100)
-
-output: "No barcode"
-
-5:
+4:Покриваат случај каде што има невалиден карактер во бар кодот.
 input: checkCart ( [("ImeItem", "123456N", 100, 0.1)], 100)
 
 output: "Invalid character in item barcode"
 
-6:
+5:Покриваат случај каде што сумата е поголема од payment и каде што нема discount.
 input: checkCart ( [("ImeItem", "123456", 1000, 0)], 100)
 
 output: false
 
-7:
+6:Покриваат случај каде што се покрива специјалниот попуст.
 input: checkCart ( [(null, "0123456", 350, 0.1)], 100)
 
 output: true
