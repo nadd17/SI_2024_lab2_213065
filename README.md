@@ -107,3 +107,28 @@ input: checkCart ( [(null, "0123456", 350, 0.1)], 100)
 output: true
 
 -------------------------------------------
+
+if (item.getPrice() > 300 && item.getDiscount() > 0 && item.getBarcode().charAt(0) == '0')
+
+input: price=301 discount=3 barcode=0111
+output: true, true, true
+
+input: price=301 discount=3 barcode=111
+output: true, true, false
+
+input: price=301 discount=3 barcode=111
+output: true, true, false
+
+input: price=301 discount=-1 barcode=X
+output: true, false, X
+
+input: price=100 discount=X barcode=X
+output: true, X, X
+
+Test Case 1: Покрива случај каде сите подуслови се исполнети.
+Test Case 2: Покрива случај каде првиот и вториот подуслов се исполнети, но третиот не.
+Test Case 3: Повторување на Test Case 2 за дополнителна проверка на истите услови.
+Test Case 4: Покрива случај каде првиот подуслов е исполнет, вториот не е, а третиот е неважечки.
+Test Case 5: Покрива случај каде првиот подуслов не е исполнет, а вториот и третиот се неважечки.
+
+---------------------------------------------------------
